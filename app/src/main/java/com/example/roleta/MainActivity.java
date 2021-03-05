@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -19,12 +20,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Sortear(View view) {
-        Random random = new Random();
-        int numero = random.nextInt(10) + 1;
-
         TextView texto = findViewById(R.id.textView2);
         TextView textoParabens = findViewById(R.id.textView3);
         TextInputEditText numeroInformado = findViewById(R.id.inputText1);
+
+        if(numeroInformado.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(),"Por favor insira um número", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Random random = new Random();
+        int numero = random.nextInt(10) + 1;
 
         String numeroSorteado = String.valueOf(numero);
         texto.setText(numeroSorteado);
